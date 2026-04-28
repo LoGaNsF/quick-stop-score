@@ -4,7 +4,7 @@ export type Player = {
   score: number;
 };
 
-export type GameStatus = "idle" | "in_progress" | "finished";
+export type GameStatus = 'idle' | 'in_progress' | 'finished';
 
 export type GameState = {
   players: Player[];
