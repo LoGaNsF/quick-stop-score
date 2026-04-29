@@ -1,13 +1,15 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import { useTranslations } from 'next-intl';
 
-import { useEffect } from 'react';
 import { useRouter } from '@/i18n/navigation';
+
 import { AppShell } from '@/components/app-shell';
-import { RoundControls } from '@/components/round-controls';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { RoundControls } from '@/components/round-controls';
 import { useGameStore } from '@/store/game-store';
 
 export function Round() {

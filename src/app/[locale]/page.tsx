@@ -1,11 +1,10 @@
-export const dynamic = 'force-static';
-
 import { useTranslations } from 'next-intl';
 
 import { Link } from '@/i18n/navigation';
+
 import { AppShell } from '@/components/app-shell';
-import { Card, CardContent } from '@/components/ui/card';
 import { buttonVariants } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 
 export default function HomePage() {
   const t = useTranslations();

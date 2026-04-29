@@ -1,9 +1,12 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
-import Link from 'next/link';
 import { useEffect, useMemo } from 'react';
+
+import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+
 import { useRouter } from '@/i18n/navigation';
+
 import { AppShell } from '@/components/app-shell';
 import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
