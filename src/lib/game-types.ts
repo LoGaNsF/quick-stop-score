@@ -15,3 +15,12 @@ export type GameState = {
 };
 
 export type RoundDelta = Record<string, number>;
+
+export type GameHistoryEntry = {
+  id: string;
+  players: Player[];
+  winnerId: string | null;
+  winnerName: string | null;
+  createdAt: number;
+  finishedAt: number;
+};

@@ -6,6 +6,7 @@ type AppShellProps = {
   subtitle?: string;
   children: React.ReactNode;
   className?: string;
+  footer?: React.ReactNode;
 };
 
 export function AppShell({
@@ -13,18 +14,26 @@ export function AppShell({
   subtitle,
   children,
   className,
+  footer,
 }: AppShellProps) {
   return (
-    <main className='min-h-screen bg-slate-50 px-4 py-8'>
-      <div className={cn('mx-auto w-full max-w-md space-y-5', className)}>
-        <header className='space-y-1'>
-          <h1 className='text-2xl font-semibold tracking-tight'>{title}</h1>
+    <main className='flex min-h-screen flex-col bg-background px-4 py-6'>
+      <div className={cn('mx-auto flex w-full max-w-md flex-1 flex-col', className)}>
+        <header className='mb-6 space-y-1'>
+          <h1 className='font-[family-name:var(--font-display)] text-2xl font-bold tracking-tight text-foreground'>
+            {title}
+          </h1>
           {subtitle ? (
             <p className='text-sm text-muted-foreground'>{subtitle}</p>
           ) : null}
         </header>
-        {children}
+        <div className='flex-1'>{children}</div>
       </div>
+      {footer ? (
+        <div className='sticky bottom-0 left-0 right-0 border-t border-border bg-background/95 px-4 py-4 backdrop-blur-sm'>
+          <div className='mx-auto w-full max-w-md'>{footer}</div>
+        </div>
+      ) : null}
     </main>
   );
 }

@@ -3,6 +3,13 @@
     "title": "Quick Stop Score",
     "subtitle": "Lleva la puntuación de tu partida fácilmente."
   },
+  "history": {
+    "title": "Últimas partidas",
+    "empty": "Sin partidas aún",
+    "emptyDesc": "Tus partidas jugadas aparecerán aquí. ¡Comienza una nueva partida!",
+    "noWinner": "Sin ganador",
+    "players": "jugadores"
+  },
   "game": {
     "title": "Partida en curso",
     "subtitle": "Puntuación acumulada de los jugadores."

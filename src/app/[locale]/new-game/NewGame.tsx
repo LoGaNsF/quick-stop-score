@@ -96,7 +96,7 @@ export function NewGame() {
               </Button>
             </div>
           </div>
-          {error ? <p className='text-sm text-red-600'>{error}</p> : null}
+          {error ? <p className='text-sm text-destructive'>{error}</p> : null}
           <div className='space-y-2'>
             {players.length === 0 ? (
               <p className='text-sm text-muted-foreground'>
@@ -106,7 +106,7 @@ export function NewGame() {
               players.map(player => (
                 <div
                   key={player}
-                  className='rounded-lg border border-border bg-white px-3 py-2 text-sm'
+                  className='rounded-lg border border-border bg-secondary px-3 py-2 text-sm text-foreground'
                 >
                   {player}
                 </div>
