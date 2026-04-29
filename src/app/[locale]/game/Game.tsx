@@ -1,7 +1,9 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { AppShell } from '@/components/app-shell';
 import { PlayerScoreList } from '@/components/player-score-list';
 import { Button } from '@/components/ui/button';
@@ -9,6 +11,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useGameStore } from '@/store/game-store';
 
 export function Game() {
+  const t = useTranslations();
   const router = useRouter();
   const state = useGameStore();
   const startRound = useGameStore(s => s.startRound);
@@ -29,10 +32,7 @@ export function Game() {
   };
 
   return (
-    <AppShell
-      title='Partida en curso'
-      subtitle='Puntuación acumulada de los jugadores.'
-    >
+    <AppShell title={t('game.title')} subtitle={t('game.subtitle')}>
       <PlayerScoreList players={state.players} />
       <Card>
         <CardContent className='pt-6'>
@@ -42,7 +42,7 @@ export function Game() {
             onClick={onNextRound}
             disabled={state.status !== 'in_progress'}
           >
-            Siguiente ronda
+            {t('round.title')}
           </Button>
         </CardContent>
       </Card>

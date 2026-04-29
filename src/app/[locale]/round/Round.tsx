@@ -1,7 +1,9 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { AppShell } from '@/components/app-shell';
 import { RoundControls } from '@/components/round-controls';
 import { Button } from '@/components/ui/button';
@@ -9,6 +11,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { useGameStore } from '@/store/game-store';
 
 export function Round() {
+  const t = useTranslations();
   const router = useRouter();
   const state = useGameStore();
   const addRoundPoint = useGameStore(s => s.addRoundPoint);
@@ -39,10 +42,7 @@ export function Round() {
   };
 
   return (
-    <AppShell
-      title='Siguiente ronda'
-      subtitle='Suma puntos y confirma la ronda.'
-    >
+    <AppShell title={t('round.title')} subtitle={t('round.subtitle')}>
       <RoundControls
         players={state.players}
         draft={state.roundDraft}
@@ -57,7 +57,7 @@ export function Round() {
             onClick={onConfirmRound}
             disabled={state.status !== 'in_progress'}
           >
-            Confirmar ronda
+            {t('round.title')}
           </Button>
         </CardContent>
       </Card>

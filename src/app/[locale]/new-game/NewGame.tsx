@@ -1,7 +1,9 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
+
 import { useMemo, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { AppShell } from '@/components/app-shell';
 import { Button } from '@/components/ui/button';
 import {
@@ -16,6 +18,7 @@ import { Label } from '@/components/ui/label';
 import { useGameStore } from '@/store/game-store';
 
 export function NewGame() {
+  const t = useTranslations();
   const router = useRouter();
   const [draftName, setDraftName] = useState('');
   const [players, setPlayers] = useState<string[]>([]);
@@ -33,11 +36,11 @@ export function NewGame() {
   const addPlayer = () => {
     const trimmed = draftName.trim();
     if (!trimmed) {
-      setError('Introduce un nombre válido.');
+      setError(t('newgame.invalidName'));
       return;
     }
     if (normalizedPlayers.has(trimmed.toLowerCase())) {
-      setError('Ese jugador ya fue añadido.');
+      setError(t('newgame.duplicatePlayer'));
       return;
     }
     setPlayers(prev => [...prev, trimmed]);
@@ -58,26 +61,26 @@ export function NewGame() {
       }
       router.push('/game');
     } catch (e) {
-      setError('Error al crear la partida. Intenta de nuevo.');
+      setError(t('newgame.errorCreatingGame'));
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <AppShell title='Nueva partida' subtitle='Añade jugadores para comenzar.'>
+    <AppShell title={t('newgame.title')} subtitle={t('newgame.subtitle')}>
       <Card>
         <CardHeader>
-          <CardTitle>Jugadores</CardTitle>
+          <CardTitle>{t('newgame.players')}</CardTitle>
         </CardHeader>
         <CardContent className='space-y-3'>
           <div className='space-y-2'>
-            <Label htmlFor='player-name'>Nombre</Label>
+            <Label htmlFor='player-name'>{t('newgame.name')}</Label>
             <div className='flex gap-2'>
               <Input
                 id='player-name'
                 value={draftName}
-                placeholder='Ej. Ana'
+                placeholder={t('newgame.placeholder')}
                 onChange={event => setDraftName(event.target.value)}
                 onKeyDown={event => {
                   if (event.key === 'Enter') {
@@ -87,7 +90,7 @@ export function NewGame() {
                 }}
               />
               <Button type='button' onClick={addPlayer}>
-                Añadir
+                {t('newgame.add')}
               </Button>
             </div>
           </div>
@@ -95,7 +98,7 @@ export function NewGame() {
           <div className='space-y-2'>
             {players.length === 0 ? (
               <p className='text-sm text-muted-foreground'>
-                Todavía no hay jugadores.
+                {t('newgame.noPlayers')}
               </p>
             ) : (
               players.map(player => (
@@ -111,7 +114,7 @@ export function NewGame() {
         </CardContent>
         <CardFooter>
           <Button onClick={startGame} disabled={!canStart || loading}>
-            {loading ? 'Creando...' : 'Comenzar partida'}
+            {loading ? t('newgame.creating') : t('newgame.start')}
           </Button>
         </CardFooter>
       </Card>
