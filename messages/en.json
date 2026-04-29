@@ -1,0 +1,36 @@
+{
+  "home": {
+    "title": "Quick Stop Score",
+    "subtitle": "Easily keep track of your game score."
+  },
+  "game": {
+    "title": "Game in progress",
+    "subtitle": "Players' accumulated score."
+  },
+  "round": {
+    "title": "Next round",
+    "subtitle": "Add points and confirm the round."
+  },
+  "newgame": {
+    "title": "New game",
+    "subtitle": "Add players to start.",
+    "players": "Players",
+    "name": "Name",
+    "placeholder": "E.g. Anna",
+    "add": "Add",
+    "noPlayers": "No players yet.",
+    "creating": "Creating...",
+    "start": "Start game",
+    "invalidName": "Please enter a valid name.",
+    "duplicatePlayer": "That player has already been added.",
+    "errorCreatingGame": "Error creating the game. Please try again."
+  },
+  "gameover": {
+    "title": "Game over",
+    "subtitle": "We have a winner.",
+    "winner": "{name} wins the game",
+    "noWinner": "Game finished",
+    "winnerDesc": "Reached {score} points and was the first to the goal.",
+    "noWinnerDesc": "No winner could be determined with the current data."
+  }
+}

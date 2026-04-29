@@ -1,14 +1,16 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import Link from 'next/link';
 import { useEffect, useMemo } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from '@/i18n/navigation';
 import { AppShell } from '@/components/app-shell';
 import { buttonVariants } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useGameStore } from '@/store/game-store';
 
 export function GameOver() {
+  const t = useTranslations();
   const router = useRouter();
   const state = useGameStore();
   const resetGame = useGameStore(s => s.resetGame);
@@ -32,22 +34,23 @@ export function GameOver() {
   if (state.status === 'idle') return null;
 
   return (
-    <AppShell title='Partida finalizada' subtitle='Tenemos un ganador.'>
+    <AppShell title={t('gameover.title')} subtitle={t('gameover.subtitle')}>
       <Card>
         <CardHeader>
           <CardTitle>
-            {winner ? `${winner.name} gana la partida` : 'Partida terminada'}
+            {winner
+              ? t('gameover.winner', { name: winner.name })
+              : t('gameover.noWinner')}
           </CardTitle>
         </CardHeader>
         <CardContent className='space-y-4'>
           {winner ? (
             <p className='text-sm text-muted-foreground'>
-              Alcanzó {winner.score} puntos y fue el primer jugador en llegar al
-              objetivo.
+              {t('gameover.winnerDesc', { score: winner.score })}
             </p>
           ) : (
             <p className='text-sm text-muted-foreground'>
-              No se pudo determinar un ganador con los datos actuales.
+              {t('gameover.noWinnerDesc')}
             </p>
           )}
           <div className='grid gap-2'>
@@ -56,7 +59,7 @@ export function GameOver() {
               className={buttonVariants({ variant: 'default' })}
               onClick={onResetGame}
             >
-              Nueva partida
+              {t('newgame.title')}
             </Link>
           </div>
         </CardContent>

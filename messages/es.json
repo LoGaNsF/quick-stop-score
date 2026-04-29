@@ -1,0 +1,36 @@
+{
+  "home": {
+    "title": "Quick Stop Score",
+    "subtitle": "Lleva la puntuación de tu partida fácilmente."
+  },
+  "game": {
+    "title": "Partida en curso",
+    "subtitle": "Puntuación acumulada de los jugadores."
+  },
+  "round": {
+    "title": "Siguiente ronda",
+    "subtitle": "Suma puntos y confirma la ronda."
+  },
+  "newgame": {
+    "title": "Nueva partida",
+    "subtitle": "Añade jugadores para comenzar.",
+    "players": "Jugadores",
+    "name": "Nombre",
+    "placeholder": "Ej. Ana",
+    "add": "Añadir",
+    "noPlayers": "Todavía no hay jugadores.",
+    "creating": "Creando...",
+    "start": "Comenzar partida",
+    "invalidName": "Introduce un nombre válido.",
+    "duplicatePlayer": "Ese jugador ya fue añadido.",
+    "errorCreatingGame": "Error al crear la partida. Intenta de nuevo."
+  },
+  "gameover": {
+    "title": "Partida finalizada",
+    "subtitle": "Tenemos un ganador.",
+    "winner": "{name} gana la partida",
+    "noWinner": "Partida terminada",
+    "winnerDesc": "Alcanzó {score} puntos y fue el primer jugador en llegar al objetivo.",
+    "noWinnerDesc": "No se pudo determinar un ganador con los datos actuales."
+  }
+}
