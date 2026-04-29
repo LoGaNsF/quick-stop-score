@@ -1,12 +1,14 @@
+import { Inter } from 'next/font/google';
 import { notFound } from 'next/navigation';
+
+import { clsx } from 'clsx';
 import { Locale, hasLocale, NextIntlClientProvider } from 'next-intl';
 import {
   getMessages,
   getTranslations,
   setRequestLocale,
 } from 'next-intl/server';
-import { clsx } from 'clsx';
-import { Inter } from 'next/font/google';
+
 import { routing } from '@/i18n/routing';
 
 const inter = Inter({ subsets: ['latin'] });
