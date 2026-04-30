@@ -29,7 +29,7 @@ export function AppShell({
     <div className='flex min-h-screen flex-col bg-background'>
       {/* Global sticky header */}
       <header className='sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-sm'>
-        <div className='flex h-14 w-full items-center px-4'>
+        <div className='flex h-14 w-full items-center justify-between px-4'>
           {!isHome ? (
             <Link
               href='/'
@@ -41,6 +41,10 @@ export function AppShell({
           ) : (
             <div className='h-9 w-9' />
           )}
+          <span className='font-[family-name:var(--font-display)] text-base font-bold tracking-tight text-primary'>
+            {isHome ? title : 'Quick Stop Score'}
+          </span>
+          <div className='h-9 w-9' />
         </div>
       </header>
 
