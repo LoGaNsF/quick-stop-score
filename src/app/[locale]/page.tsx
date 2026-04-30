@@ -14,6 +14,7 @@ export default function HomePage() {
     <AppShell
       title={t('home.title')}
       subtitle={t('home.subtitle')}
+      showPageHeader={false}
       footer={
         <Link
           href='/new-game'

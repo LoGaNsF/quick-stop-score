@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 type AppShellProps = {
   title: string;
   subtitle?: string;
+  showPageHeader?: boolean;
   children: React.ReactNode;
   className?: string;
   footer?: React.ReactNode;
@@ -16,6 +17,7 @@ type AppShellProps = {
 export function AppShell({
   title,
   subtitle,
+  showPageHeader = true,
   children,
   className,
   footer,
@@ -26,11 +28,8 @@ export function AppShell({
   return (
     <div className='flex min-h-screen flex-col bg-background'>
       {/* Global sticky header */}
-      <header className='sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm'>
-        <div className='mx-auto flex h-14 w-full max-w-md items-center justify-between px-4'>
-          <span className='font-[family-name:var(--font-display)] text-base font-bold tracking-tight text-primary'>
-            Quick Stop
-          </span>
+      <header className='sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur-sm'>
+        <div className='flex h-14 w-full items-center px-4'>
           {!isHome ? (
             <Link
               href='/'
@@ -48,14 +47,16 @@ export function AppShell({
       {/* Page content */}
       <main className='flex flex-1 flex-col px-4 py-6'>
         <div className={cn('mx-auto flex w-full max-w-md flex-1 flex-col', className)}>
-          <div className='mb-6 space-y-1'>
-            <h1 className='font-[family-name:var(--font-display)] text-2xl font-bold tracking-tight text-foreground'>
-              {title}
-            </h1>
-            {subtitle ? (
-              <p className='text-sm text-muted-foreground'>{subtitle}</p>
-            ) : null}
-          </div>
+          {showPageHeader ? (
+            <div className='mb-6 space-y-1'>
+              <h1 className='font-[family-name:var(--font-display)] text-2xl font-bold tracking-tight text-foreground'>
+                {title}
+              </h1>
+              {subtitle ? (
+                <p className='text-sm text-muted-foreground'>{subtitle}</p>
+              ) : null}
+            </div>
+          ) : null}
           <div className='flex-1'>{children}</div>
         </div>
       </main>
