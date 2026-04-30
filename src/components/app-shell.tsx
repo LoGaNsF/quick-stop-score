@@ -1,5 +1,9 @@
-// Server Component
+'use client';
+
 import { cn } from '@/lib/utils';
+import { House } from 'lucide-react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 type AppShellProps = {
   title: string;
@@ -16,24 +20,51 @@ export function AppShell({
   className,
   footer,
 }: AppShellProps) {
+  const pathname = usePathname();
+  const isHome = pathname === '/' || /^\/[a-z]{2}$/.test(pathname);
+
   return (
-    <main className='flex min-h-screen flex-col bg-background px-4 py-6'>
-      <div className={cn('mx-auto flex w-full max-w-md flex-1 flex-col', className)}>
-        <header className='mb-6 space-y-1'>
-          <h1 className='font-[family-name:var(--font-display)] text-2xl font-bold tracking-tight text-foreground'>
-            {title}
-          </h1>
-          {subtitle ? (
-            <p className='text-sm text-muted-foreground'>{subtitle}</p>
-          ) : null}
-        </header>
-        <div className='flex-1'>{children}</div>
-      </div>
+    <div className='flex min-h-screen flex-col bg-background'>
+      {/* Global sticky header */}
+      <header className='sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm'>
+        <div className='mx-auto flex h-14 w-full max-w-md items-center justify-between px-4'>
+          <span className='font-[family-name:var(--font-display)] text-base font-bold tracking-tight text-primary'>
+            Quick Stop
+          </span>
+          {!isHome ? (
+            <Link
+              href='/'
+              aria-label='Ir al inicio'
+              className='flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground'
+            >
+              <House className='h-5 w-5' />
+            </Link>
+          ) : (
+            <div className='h-9 w-9' />
+          )}
+        </div>
+      </header>
+
+      {/* Page content */}
+      <main className='flex flex-1 flex-col px-4 py-6'>
+        <div className={cn('mx-auto flex w-full max-w-md flex-1 flex-col', className)}>
+          <div className='mb-6 space-y-1'>
+            <h1 className='font-[family-name:var(--font-display)] text-2xl font-bold tracking-tight text-foreground'>
+              {title}
+            </h1>
+            {subtitle ? (
+              <p className='text-sm text-muted-foreground'>{subtitle}</p>
+            ) : null}
+          </div>
+          <div className='flex-1'>{children}</div>
+        </div>
+      </main>
+
       {footer ? (
         <div className='sticky bottom-0 left-0 right-0 border-t border-border bg-background/95 px-4 py-4 backdrop-blur-sm'>
           <div className='mx-auto w-full max-w-md'>{footer}</div>
         </div>
       ) : null}
-    </main>
+    </div>
   );
 }
