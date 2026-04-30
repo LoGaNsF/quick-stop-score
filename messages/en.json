@@ -16,7 +16,8 @@
   },
   "round": {
     "title": "Next round",
-    "subtitle": "Add points and confirm the round."
+    "subtitle": "Add points and confirm the round.",
+    "confirm": "Confirm round"
   },
   "newgame": {
     "title": "New game",

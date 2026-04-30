@@ -8,7 +8,6 @@ import { useRouter } from '@/i18n/navigation';
 
 import { AppShell } from '@/components/app-shell';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { RoundControls } from '@/components/round-controls';
 import { useGameStore } from '@/store/game-store';
 
@@ -44,25 +43,26 @@ export function Round() {
   };
 
   return (
-    <AppShell title={t('round.title')} subtitle={t('round.subtitle')}>
+    <AppShell
+      title={t('round.title')}
+      subtitle={t('round.subtitle')}
+      footer={
+        <Button
+          className='w-full'
+          size='lg'
+          onClick={onConfirmRound}
+          disabled={state.status !== 'in_progress'}
+        >
+          {t('round.confirm')}
+        </Button>
+      }
+    >
       <RoundControls
         players={state.players}
         draft={state.roundDraft}
         onAddPoint={onAddPoint}
         onRemovePoint={onRemovePoint}
       />
-      <Card>
-        <CardContent className='pt-6'>
-          <Button
-            className='w-full'
-            size='lg'
-            onClick={onConfirmRound}
-            disabled={state.status !== 'in_progress'}
-          >
-            {t('round.title')}
-          </Button>
-        </CardContent>
-      </Card>
     </AppShell>
   );
 }

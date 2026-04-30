@@ -16,7 +16,8 @@
   },
   "round": {
     "title": "Siguiente ronda",
-    "subtitle": "Suma puntos y confirma la ronda."
+    "subtitle": "Suma puntos y confirma la ronda.",
+    "confirm": "Confirmar ronda"
   },
   "newgame": {
     "title": "Nueva partida",

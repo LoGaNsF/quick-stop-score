@@ -58,10 +58,31 @@ export function GameOver() {
   if (state.status === 'idle') return null;
 
   return (
-    <AppShell title={t('gameover.title')} subtitle={t('gameover.subtitle')}>
+    <AppShell
+      title={t('gameover.title')}
+      subtitle={t('gameover.subtitle')}
+      footer={
+        <div className='grid grid-cols-2 gap-3'>
+          <button
+            onClick={onGoHome}
+            className={buttonVariants({ variant: 'secondary', className: 'gap-2' })}
+          >
+            <Home className='h-4 w-4' />
+            {t('home.title')}
+          </button>
+          <button
+            onClick={onResetGame}
+            className={buttonVariants({ variant: 'default', className: 'gap-2' })}
+          >
+            <RotateCcw className='h-4 w-4' />
+            {t('newgame.title')}
+          </button>
+        </div>
+      }
+    >
       <div className='space-y-4'>
         {/* Winner Card */}
-        <Card className='border-primary/30 bg-gradient-to-br from-card to-primary/5'>
+        <Card className='border-primary/30 bg-primary/10'>
           <CardContent className='pt-6'>
             <div className='flex flex-col items-center text-center'>
               <div className='mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/20'>
@@ -94,12 +115,12 @@ export function GameOver() {
                   key={player.id}
                   className={`flex items-center justify-between rounded-lg px-3 py-2 ${
                     idx === 0
-                      ? 'bg-primary/10 text-primary'
+                      ? 'bg-primary/15 text-primary'
                       : 'bg-secondary text-foreground'
                   }`}
                 >
                   <div className='flex items-center gap-3'>
-                    <span className='flex h-6 w-6 items-center justify-center rounded-full bg-background text-xs font-medium'>
+                    <span className='flex h-6 w-6 items-center justify-center rounded-full bg-background text-xs font-medium text-foreground'>
                       {idx + 1}
                     </span>
                     <span className='font-medium'>{player.name}</span>
@@ -110,24 +131,6 @@ export function GameOver() {
             </div>
           </CardContent>
         </Card>
-
-        {/* Actions */}
-        <div className='grid grid-cols-2 gap-3'>
-          <button
-            onClick={onGoHome}
-            className={buttonVariants({ variant: 'secondary', className: 'gap-2' })}
-          >
-            <Home className='h-4 w-4' />
-            {t('home.title')}
-          </button>
-          <button
-            onClick={onResetGame}
-            className={buttonVariants({ variant: 'default', className: 'gap-2' })}
-          >
-            <RotateCcw className='h-4 w-4' />
-            {t('newgame.title')}
-          </button>
-        </div>
       </div>
     </AppShell>
   );

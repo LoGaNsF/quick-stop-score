@@ -8,7 +8,6 @@ import { useRouter } from '@/i18n/navigation';
 
 import { AppShell } from '@/components/app-shell';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { PlayerScoreList } from '@/components/player-score-list';
 import { useGameStore } from '@/store/game-store';
 
@@ -34,20 +33,21 @@ export function Game() {
   };
 
   return (
-    <AppShell title={t('game.title')} subtitle={t('game.subtitle')}>
+    <AppShell
+      title={t('game.title')}
+      subtitle={t('game.subtitle')}
+      footer={
+        <Button
+          className='w-full'
+          size='lg'
+          onClick={onNextRound}
+          disabled={state.status !== 'in_progress'}
+        >
+          {t('round.title')}
+        </Button>
+      }
+    >
       <PlayerScoreList players={state.players} />
-      <Card>
-        <CardContent className='pt-6'>
-          <Button
-            className='w-full'
-            size='lg'
-            onClick={onNextRound}
-            disabled={state.status !== 'in_progress'}
-          >
-            {t('round.title')}
-          </Button>
-        </CardContent>
-      </Card>
     </AppShell>
   );
 }

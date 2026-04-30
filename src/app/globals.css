@@ -4,25 +4,29 @@
 
 @layer base {
   :root {
-    --background: 0 0% 7%;
+    /* Navy blue from the box bottom */
+    --background: 228 57% 14%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 11%;
+    /* Slightly lighter navy for cards */
+    --card: 228 52% 19%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 11%;
+    --popover: 228 52% 19%;
     --popover-foreground: 0 0% 98%;
-    --primary: 142 76% 46%;
-    --primary-foreground: 0 0% 2%;
-    --secondary: 0 0% 15%;
+    /* Golden yellow from the box top */
+    --primary: 44 96% 50%;
+    --primary-foreground: 228 57% 10%;
+    /* Slightly lighter navy for secondary elements */
+    --secondary: 228 48% 24%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 64%;
-    --accent: 142 76% 46%;
-    --accent-foreground: 0 0% 2%;
+    --muted: 228 48% 24%;
+    --muted-foreground: 228 20% 65%;
+    --accent: 44 96% 50%;
+    --accent-foreground: 228 57% 10%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 18%;
-    --input: 0 0% 18%;
-    --ring: 142 76% 46%;
+    --border: 228 40% 28%;
+    --input: 228 40% 28%;
+    --ring: 44 96% 50%;
     --radius: 0.75rem;
   }
 }
