@@ -3,13 +3,21 @@
     "title": "Quick Stop Score",
     "subtitle": "Easily keep track of your game score."
   },
+  "history": {
+    "title": "Recent games",
+    "empty": "No games yet",
+    "emptyDesc": "Your played games will appear here. Start a new game!",
+    "noWinner": "No winner",
+    "players": "players"
+  },
   "game": {
     "title": "Game in progress",
     "subtitle": "Players' accumulated score."
   },
   "round": {
     "title": "Next round",
-    "subtitle": "Add points and confirm the round."
+    "subtitle": "Add points and confirm the round.",
+    "confirm": "Confirm round"
   },
   "newgame": {
     "title": "New game",

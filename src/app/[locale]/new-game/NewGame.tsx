@@ -8,10 +8,10 @@ import { useRouter } from '@/i18n/navigation';
 
 import { AppShell } from '@/components/app-shell';
 import { Button } from '@/components/ui/button';
+import { X } from 'lucide-react';
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
@@ -34,6 +34,10 @@ export function NewGame() {
     () => new Set(players.map(name => name.trim().toLowerCase())),
     [players],
   );
+
+  const removePlayer = (name: string) => {
+    setPlayers(prev => prev.filter(p => p !== name));
+  };
 
   const addPlayer = () => {
     const trimmed = draftName.trim();
@@ -70,7 +74,15 @@ export function NewGame() {
   };
 
   return (
-    <AppShell title={t('newgame.title')} subtitle={t('newgame.subtitle')}>
+    <AppShell
+      title={t('newgame.title')}
+      subtitle={t('newgame.subtitle')}
+      footer={
+        <Button className='w-full' size='lg' onClick={startGame} disabled={!canStart || loading}>
+          {loading ? t('newgame.creating') : t('newgame.start')}
+        </Button>
+      }
+    >
       <Card>
         <CardHeader>
           <CardTitle>{t('newgame.players')}</CardTitle>
@@ -96,7 +108,7 @@ export function NewGame() {
               </Button>
             </div>
           </div>
-          {error ? <p className='text-sm text-red-600'>{error}</p> : null}
+          {error ? <p className='text-sm text-destructive'>{error}</p> : null}
           <div className='space-y-2'>
             {players.length === 0 ? (
               <p className='text-sm text-muted-foreground'>
@@ -106,19 +118,22 @@ export function NewGame() {
               players.map(player => (
                 <div
                   key={player}
-                  className='rounded-lg border border-border bg-white px-3 py-2 text-sm'
+                  className='flex items-center justify-between rounded-lg border border-border bg-secondary px-3 py-2 text-sm text-foreground'
                 >
-                  {player}
+                  <span>{player}</span>
+                  <button
+                    type='button'
+                    onClick={() => removePlayer(player)}
+                    aria-label={`Eliminar ${player}`}
+                    className='ml-2 flex h-6 w-6 items-center justify-center rounded text-muted-foreground transition-colors hover:bg-background hover:text-destructive'
+                  >
+                    <X className='h-3.5 w-3.5' />
+                  </button>
                 </div>
               ))
             )}
           </div>
         </CardContent>
-        <CardFooter>
-          <Button onClick={startGame} disabled={!canStart || loading}>
-            {loading ? t('newgame.creating') : t('newgame.start')}
-          </Button>
-        </CardFooter>
       </Card>
     </AppShell>
   );
