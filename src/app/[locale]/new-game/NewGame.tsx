@@ -11,7 +11,6 @@ import { Button } from '@/components/ui/button';
 import {
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
@@ -70,7 +69,15 @@ export function NewGame() {
   };
 
   return (
-    <AppShell title={t('newgame.title')} subtitle={t('newgame.subtitle')}>
+    <AppShell
+      title={t('newgame.title')}
+      subtitle={t('newgame.subtitle')}
+      footer={
+        <Button className='w-full' size='lg' onClick={startGame} disabled={!canStart || loading}>
+          {loading ? t('newgame.creating') : t('newgame.start')}
+        </Button>
+      }
+    >
       <Card>
         <CardHeader>
           <CardTitle>{t('newgame.players')}</CardTitle>
@@ -114,11 +121,6 @@ export function NewGame() {
             )}
           </div>
         </CardContent>
-        <CardFooter>
-          <Button onClick={startGame} disabled={!canStart || loading}>
-            {loading ? t('newgame.creating') : t('newgame.start')}
-          </Button>
-        </CardFooter>
       </Card>
     </AppShell>
   );
